@@ -1,0 +1,281 @@
+<html>
+  <head>
+   <title>Explore Riverside</title>
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../jquery/jquery.mobile-1.1.1.min.css" />
+  <link rel="stylesheet" href="../css/app-css.css" />
+      
+  
+  <script src="../js/cordova-2.0.0.js"></script>
+  <script type="text/javascript" src="../js/FacebookConnect.js"></script>
+ <script src="../js/ChildBrowser.js"></script>
+  <script src="../jquery/jquery-1.7.2.min.js"></script>
+  <script src="../jquery/jquery.mobile-1.1.1.min.js"></script>
+  <script type="text/javascript" charset="utf-8">
+
+      var onDeviceReady = function() {
+          
+          // Facebook Plugin Events and initialization 
+          var facebookConnect = window.plugins.facebookConnect;
+          
+          facebookConnect.initWithAppId("436990936339840",function(result){});
+          
+          $('#fbpost').click(function(){ 
+                             
+                             var dialogOptions = {
+                             link: 'http://www.facebook.com/CityofRiverside',
+                             picture: 'http://www.riversideca.gov/press/Brass-CA&I-bwn.jpg',
+                             name: 'Explore Riverside',
+                             caption: 'Riverside City, CA',
+                             message: 'Explore the opportunities in Riverside Community',
+                             description: '#1 Intelligent Community of the Year 2012'
+                             
+                             };
+                             facebookConnect.dialog('feed', dialogOptions, function(response) {
+                                                    console.log("FacebookConnect.dialog:" + JSON.stringify(response));
+                                                    });
+                             });
+          $('#fbpostdetail').click(function(){ 
+                                   
+                                   var dialogOptions = {
+                                   link: 'http://www.facebook.com/CityofRiverside',
+                                   picture: 'http://www.riversideca.gov/press/Brass-CA&I-bwn.jpg',
+                                   name: 'Explore Riverside',
+                                   caption: 'Riverside City, CA',
+                                   message: 'Explore the opportunities in Riverside Community',
+                                   description: '#1 Intelligent Community of the Year 2012'
+                                   
+                                   };
+                                   facebookConnect.dialog('feed', dialogOptions, function(response) {
+                                                          console.log("FacebookConnect.dialog:" + JSON.stringify(response));
+                                                          });
+                                   });          
+          
+          // Child Browser
+   
+       };
+       
+        function init() {
+       	document.addEventListener("deviceready", onDeviceReady, true);
+        }    
+</script>  
+
+  </head>
+  <body onload="init();" id="stage" class="theme"> 
+     
+<div data-role="page">
+
+	<div data-role="header" data-position="inline">
+    <h1>Places to Stay</h1>
+    <a href="../index.html" class="ui-btn-left" data-ajax="false" data-icon="home" data-direction="reverse">
+      Home
+    </a>
+        <img id="fbpostdetail" src='../images/facebook_btn34x34.png' alt='FaceBook Comment' class='ui-btn-right'><img/>
+	</div>
+
+ <div data-role="content">
+    <ul data-role="listview">
+      <li>        
+      <a href="mission_inn_hotel_spa.html" data-ajax="false">
+      <img  src="../images/stay/mission_inn_hotel_spa.jpg">
+      <h3>Mission Inn Hotel & Spa</h3>
+      <p style='font-size: 0.7em'>3649 Mission Inn Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="marriott_riverside.html" data-ajax="false">
+      <img  src="../images/stay/marriott_riverside.jpg">
+      <h3>Marriott Riverside</h3>
+      <p style='font-size: 0.7em'>3400 Market Street</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="courtyard_by_marriott.html" data-ajax="false">
+      <img  src="../images/stay/courtyard_by_marriott.jpg">
+      <h3>Courtyard by Marriott</h3>
+      <p style='font-size: 0.7em'>1510 University Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="hampton_inn_suites.html" data-ajax="false">
+      <img  src="../images/stay/hampton_inn_suites.jpg">
+      <h3>Hampton Inn & Suites</h3>
+      <p style='font-size: 0.7em'>4250 Riverwalk Parkway</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="comfort_inn.html" data-ajax="false">
+      <img  src="../images/stay/comfort_inn.jpg">
+      <h3>Comfort Inn</h3>
+      <p style='font-size: 0.7em'>1590 University Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="thunderbird_lodge.html" data-ajax="false">
+      <img  src="../images/stay/thunderbird_lodge.jpg">
+      <h3>Thunderbird Lodge</h3>
+      <p style='font-size: 0.7em'>2711 University Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="quality_inn_suites.html" data-ajax="false">
+      <img  src="../images/stay/quality_inn_suites.jpg">
+      <h3>Quality Inn & Suites</h3>
+      <p style='font-size: 0.7em'>11043 Magnolia Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="days_inn_riverside_tyler_mall.html" data-ajax="false">
+      <img  src="../images/stay/days_inn_riverside_tyler_mall.jpg">
+      <h3>Days Inn - Riverside-Tyler Mall</h3>
+      <p style='font-size: 0.7em'>10545 Magnolia Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="airport_inn.html" data-ajax="false">
+      <img  src="../images/stay/blank.png">
+      <h3>Airport Inn</h3>
+      <p style='font-size: 0.7em'>6759 Arlington Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="american_inn.html" data-ajax="false">
+      <img  src="../images/stay/blank.png">
+      <h3>American Inn</h3>
+      <p style='font-size: 0.7em'>11057 Magnolia Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="america_s_best_value_inn.html" data-ajax="false">
+      <img  src="../images/stay/america_s_best_value_inn.jpg">
+      <h3>America's Best Value Inn</h3>
+      <p style='font-size: 0.7em'>4045 University Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="arlington_motor_inn.html" data-ajax="false">
+      <img  src="../images/stay/blank.png">
+      <h3>Arlington Motor Inn</h3>
+      <p style='font-size: 0.7em'>6843 Arlington Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="budget_inn_of_riverside.html" data-ajax="false">
+      <img  src="../images/stay/blank.png">
+      <h3>Budget Inn of Riverside</h3>
+      <p style='font-size: 0.7em'>1911 University Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="dynasty_suites_hotel.html" data-ajax="false">
+      <img  src="../images/stay/dynasty_suites_hotel.jpg">
+      <h3>Dynasty Suites Hotel</h3>
+      <p style='font-size: 0.7em'>3735 Iowa Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="econo_lodge.html" data-ajax="false">
+      <img  src="../images/stay/econo_lodge.jpg">
+      <h3>Econo Lodge</h3>
+      <p style='font-size: 0.7em'>10705 Magnolia Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="economy_inn.html" data-ajax="false">
+      <img  src="../images/stay/blank.png">
+      <h3>Economy Inn</h3>
+      <p style='font-size: 0.7em'>9878 Magnolia Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="garden_inn.html" data-ajax="false">
+      <img  src="../images/stay/blank.png">
+      <h3>Garden Inn</h3>
+      <p style='font-size: 0.7em'>9328 Magnolia Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="motel_6_riverside_east.html" data-ajax="false">
+      <img  src="../images/stay/motel_6_riverside_east.jpg">
+      <h3>Motel 6 - Riverside East</h3>
+      <p style='font-size: 0.7em'>1260 University Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="motel_6_riverside_south.html" data-ajax="false">
+      <img  src="../images/stay/motel_6_riverside_south.jpg">
+      <h3>Motel 6 - Riverside South</h3>
+      <p style='font-size: 0.7em'>3663 La Sierra Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="motel_6_riverside_west.html" data-ajax="false">
+      <img  src="../images/stay/motel_6_riverside_west.jpg">
+      <h3>Motel 6 - Riverside West</h3>
+      <p style='font-size: 0.7em'>6830 Valley Way</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="roadway_inn.html" data-ajax="false">
+      <img  src="../images/stay/blank.png">
+      <h3>Roadway Inn</h3>
+      <p style='font-size: 0.7em'>10518 Magnolia Avenue</p>
+      </a>            
+      </li>
+      
+      
+      <li>        
+      <a href="sands_motel.html" data-ajax="false">
+      <img  src="../images/stay/blank.png">
+      <h3>Sands Motel</h3>
+      <p style='font-size: 0.7em'>10625 Magnolia Avenue</p>
+      </a>            
+      </li>  
+
+    </ul>
+  </div>
+
+</div><!-- Page End -->
+  </body><!-- Body End -->
+</html>

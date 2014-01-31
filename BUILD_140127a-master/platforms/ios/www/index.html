@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+   <title>Explore Riverside</title>
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="jquery/jquery.mobile-1.1.1.min.css" />
+  <link rel="stylesheet" href="css/app-css.css" />
+  <script src="phonegap.js"></script>
+  <script src="js/json2.js"></script>
+  <script src="jquery/jquery-1.7.2.min.js"></script>
+  <script src="jquery/jquery.mobile-1.1.1.min.js"></script>
+  <!--script src="js/ChildBrowser.js"></script-->
+  <script type="text/javascript" src="js/FacebookConnect.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <script src="https://connect.facebook.net/en_US/all.js" type="text/javascript"></script>
+  <script type="text/javascript" charset="utf-8"></script>
+
+  </head>
+  <body onload="init();" id="stage" class="theme">
+ 
+<div data-role="page" id="index" >
+
+  <div data-role="header" data-position="inline">
+  </div>
+
+  <div data-role="content">  
+    <ul data-role="listview"  id="mainList" data-inset="true">
+    
+      <li data-role="list-divider">Quick Links</li>
+      <li><a href="shopList.html" data-ajax="false">Where to shop</a></li>
+      <li><a href="stayList.html" data-ajax="false">Where to stay</a></li>
+      <li><a href="playList.html" data-ajax="false">Where to play</a></li>
+      
+      <li data-role="list-divider">Nearby</li>
+      <li><a href="dineList.html" data-ajax="false">Where to dine</a></li>
+      
+      <li data-role="list-divider">Other Information</li>
+      <li><a href="about.html" data-rel="dialog">About Us</a></li>
+      <li><a href="tel:9518265311">Call 311</a></li>    
+      <li><a href="#" id="erSite" data-ajax="false">Explore Riverside</a></li>
+    </ul>
+    
+      
+    <div id="yelp"   style="text-align: right;"><img src="images/yelp.png"></div>
+    <div id="facebook" style="text-align: left; position:absolute; top:422px;">
+        <img id="fbpost" src='images/facebook_btn34x34.png' alt='FaceBook Comment'><img/> 
+    </div>  
+     
+    <!--<div id="Div1" style="text-align: right;  top:422px;">
+        <img id="ftest" src='images/whiteButton.png' alt='FaceBook Comment'><img/> 
+    </div> -->
+  </div>    
+
+</div>
+  </body><!-- Body End -->
+</html>

@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="org.riv.tour" version="1.1.0" versionCode="10" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Explore Riverside</name>
+    <description>
+        Explore shops, hotels, and other attractions in Riverside.
+    </description>
+    <author email="operations-it@riversideca.gov" href="http://www.riversideca.gov">
+        Riverside IT
+    </author>
+    <content src="index.html" />
+    <preference name="fullscreen" value="true" />
+    <access origin="*" />
+    <access origin="*.googleapis.com/*"/>
+	<access origin="*.gstatic.com/*"/>
+	<access origin="*.google.com/*"/>
+	<access origin="*.googleusercontent.com/*"/>
+    <access origin="*.facebook.net/*" />
+    <access origin="*.facebook.com/*" />
+    <access origin="*.riversideca.gov/*" />
+    <access origin="*.yelp.com/*" />
+</widget>

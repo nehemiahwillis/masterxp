@@ -1,0 +1,322 @@
+<html>
+  <head>
+   <title>Explore Riverside</title>
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../jquery/jquery.mobile-1.1.1.min.css" />
+  <link rel="stylesheet" href="../css/app-css.css" />
+  
+  <script src="../js/json2.js"></script>   
+  
+  <script src="../js/cordova-2.0.0.js"></script>
+  <script type="text/javascript" src="../js/FacebookConnect.js"></script>
+  <script src="../js/ChildBrowser.js"></script>
+  <script src="../jquery/jquery-1.7.2.min.js"></script>
+  <script src="../jquery/jquery.mobile-1.1.1.min.js"></script>
+      <script src="https://connect.facebook.net/en_US/all.js" type="text/javascript"></script>
+  <script type="text/javascript" charset="utf-8">
+
+   var YWSID = "O06y9qyLfowZ-e5DYMiBnQ";
+   var yelpRequestURL;
+   var businessData;
+   var local_latitude;
+   var local_longitude;
+   var addr;
+   var city;
+   var state;
+   var zip;
+   var cb;
+   var yname;
+   var ylat;
+   var ylon; 
+      
+   function alertDismissed() {
+     // do something
+	}
+    
+    function onError(error) {
+          navigator.notification.alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+   	}
+    
+      function onCloseBrowser() {
+          console.log("onCloseBrowser!");
+      }
+      
+      function locChanged(loc) {
+          console.log("locChanged!");
+      }
+      
+      function onOpenExternal() {
+          alert("onOpenExternal!");
+      }
+
+      var onDeviceReady = function() {
+
+          // Facebook Plugin Events and initialization 
+          var facebookConnect = window.plugins.facebookConnect;
+
+          //facebookConnect.initWithAppId("436990936339840", function(result) { });
+          
+//          facebookConnect.login({ permissions: ["publish_checkins", "publish_stream", "publish_actions"], appId: "436990936339840" }, function(result) {
+//              console.log("FacebookConnect.login:" + JSON.stringify(result));
+//              acctok = result.accessToken;
+//              console.log("FacebookConnect.accessToken:" + acctok);
+//              // Check for cancellation/error
+//              if (result.cancelled || result.error) {
+//                  console.log("FacebookConnect.login:failedWithError:" + result.message);
+//                  return;
+//              }
+//              else {
+
+
+//                  console.log("1111111111111111111111111111111111111111111111111111");
+
+//              }
+//          });
+
+          $('#fbpost').click(function() {
+
+              var dialogOptions = {
+                  link: 'http://www.facebook.com/CityofRiverside',
+                  picture: 'http://www.riversideca.gov/press/Brass-CA&I-bwn.jpg',
+                  name: 'Explore Riverside',
+                  caption: 'Riverside City, CA',
+                  message: 'Explore the opportunities in Riverside Community',
+                  description: '#1 Intelligent Community of the Year 2012'
+
+              };
+              facebookConnect.dialog('feed', dialogOptions, function(response) {
+                  console.log("FacebookConnect.dialog:" + JSON.stringify(response));
+              });
+          });
+          
+          $('#fbpostdetail').click(function() {
+
+              //                             var dialogOptions = {
+              //                             link: 'http://www.facebook.com/CityofRiverside',
+              //                           picture: 'http://www.riversideca.gov/press/Brass-CA&I-bwn.jpg',
+              //                             name: 'Explore Riverside',
+              //                             caption: 'Riverside City, CA',
+              //                             message: 'Explore the opportunities in Riverside Community',
+              //                             description: '#1 Intelligent Community of the Year 2012'
+              //                             
+              //                             };
+              //                             facebookConnect.dialog('feed', dialogOptions, function(response) {
+              //                                                    console.log("FacebookConnect.dialog:" + JSON.stringify(response));
+              //                                                    });
+
+              FB.api('/search?type=place&center=' + ylat + ',%20'+ylon+'&distance=1000&q='+ yname+'&access_token='
+                + acctok, function(resp) {
+                    //&access_token='            + response.authResponse.accessToken, function(resp) {
+                    console.log("FacebookConnect.dialog:" + JSON.stringify(resp)); //resp.data[0].id);
+                    if (resp && !resp.error) {
+                        var loc = resp.data[0];
+                        if (loc)//loc != null) 
+                        {
+                            pid = loc.id;
+                            lon = loc.location.longitude;
+                            lat = loc.location.latitude;
+                            console.log("lat:  " + lat);
+
+
+                            var requestOptions = {
+                                place: pid,
+                                coordinates: { "latitude": lat, "longitude": lon },
+                                message: prompt("Enter Message for Check in", '')
+                            };
+                            console.log("1");
+                            if (!requestOptions.message)  // user cancelled
+                                return;
+
+                            facebookConnect.requestWithGraphPath('me/checkins', requestOptions, 'POST', function(response) {
+                                console.log("FacebookConnect.dialog:" + response.id);
+                            });
+                        }
+                        else {
+                            alert("Unable to resolve Facebook place.");
+                        }
+                    }
+                    else {
+                        alert("Facebook place resolution error.");
+                    }
+                });
+
+          });
+
+          // Child Browser
+
+
+          navigator.geolocation.getCurrentPosition(	function(position) {
+
+
+              if ((local_latitude != position.coords.latitude) && (local_longitude != position.coords.longitude) && ((businessData == null) || (businessData == undefined))) {
+
+                  local_latitude = position.coords.latitude;
+                  local_longitude = position.coords.longitude;
+
+                  yelpRequestURL = "https://api.yelp.com/" +
+            	"business_review_search?" +
+            	"callback=" + "handleResults" +
+            	"&term=restaurants" +
+            	"&limit=20" +
+            	"&radius=1" +
+            	"&lat=" + local_latitude +
+            	"&long=" + local_longitude +
+            	"&ywsid=O06y9qyLfowZ-e5DYMiBnQ";
+
+                  /* do the api request */
+                  var script = document.createElement('script');
+                  script.src = yelpRequestURL;
+                  script.type = 'text/javascript';
+                  var head = document.getElementsByTagName('head').item(0);
+                  head.appendChild(script);
+              }
+          }
+           , onError);
+
+
+cb = ChildBrowser.install();
+
+          $('#mapit').live("click", function() {
+                           
+                cb = window.plugins.childBrowser;
+              var siteURL = "http://maps.google.com?saddr=" + local_latitude + "," + local_longitude + "&daddr=" + addr + "," + city + "," + state;
+              //var root = this;
+                           
+                           //cb = ChildBrowser.install();
+              if (cb != null) {
+
+                  cb.onLocationChange = function(loc) { root.locChanged(loc); };
+                  cb.onClose = function() { root.onCloseBrowser(); };
+                 cb.onOpenExternal = function() { root.onOpenExternal(); };
+                  cb.showWebPage(siteURL.replace(/ /g, "+"));
+
+
+              }
+
+          });
+
+          $('#showBack').live("click", function() { $.mobile.changePage('#listPage', { transition: "pop" }); });
+          $('#search-list').delegate('li', 'tap', function() {
+
+              var index = $(this).index();
+              var biz1 = businessData.businesses[index];
+
+              addr = biz1.address1;
+              city = biz1.city;
+              state = biz1.state;
+              zip = biz1.zip;
+              yname = biz1.name;
+              ylat = biz1.latitude;
+              ylon = biz1.longitude;
+
+
+              document.getElementById("NAME").innerHTML = biz1.name;
+
+              document.getElementById("bizcontent").innerHTML =
+
+   					     '<table width="100%">' +
+						 '<tr>' +
+						 '<td width="1%" style="vertical-align: top; padding: 6px"><img  src="' + biz1.photo_url + '"></td>' +
+				         '<td style="vertical-align: top">' +
+				         '<h2 style="margin-top: 0px">' + biz1.name + '</h2>' +
+				         '<p><strong>' + biz1.categories[0].name + '</strong></p>' +
+				         '</td>' +
+			             '</tr>' +
+		                 '</table>' +
+         			     '<div data-role="collapsible" data-theme="a" data-content-theme="a" data-collapsed="false">' +
+				         '<h3>Phone Number</h3>' +
+ 					     '<p><a href="tel:' + biz1.phone + '">(' + biz1.phone.substr(0, 3) + ') ' + biz1.phone.substr(3, 3) + '-' + biz1.phone.substr(6) + '</a></p>' +
+			             '</div>' +
+				   		 '<div data-role="collapsible" data-theme="a" data-content-theme="a" data-collapsed="false">' +
+			             '<h3>Address</h3>' +
+			             '<p>' +
+                         '<a href="#" id="mapit" data-ajax="false">' +
+                         	biz1.address1 + '<br>' + biz1.city + ', ' + biz1.state + ' ' + biz1.zip +
+                         '</a></p>' +
+		                 '</div>';
+
+              $.mobile.changePage('#detailPage', { transition: "pop" });
+              $('#detailPage').trigger("create");
+          });
+
+      };
+       
+        
+     /*
+     * If a sucessful API response is received, place
+     * If not, display an error.
+     */
+    function handleResults(data){
+        $('#busy').hide();
+        if(data.message.text == "OK") {
+            
+            if (data.businesses.length == 0) {
+               navigator.notification.alert("Error: No restaurants were found near that location");
+               return;
+            }
+         
+            businessData = data;
+        	for(var i=0; i<data.businesses.length; i++) {
+        	   biz = data.businesses[i];
+         		$('#search-list').append('<li>' + 
+	 				'<a href="#" data-ajax="false">' + 
+	 				'<img src="' +  biz.photo_url + '" alt="SR Image"/>' + 
+	 				'<h3>' + biz.name + '</h3>' + 
+	 				'<p style="font-size: 0.7em">' + biz.address1 + '<br>' + biz.address2  + '</p>' + 
+	 				'<p><strong>' + biz.categories[0].name + '</strong></p>' + 
+	 				'<p class="ui-li-count" data-mini="true">' + biz.avg_rating + ' stars</p>' + 
+	 				'</a>' + 
+	 				'</li>');
+
+	 			$('#search-list').listview('refresh');           
+          
+          	}
+        }
+        else {
+            navigator.notification.alert("Error: " + data.message.text);
+        }
+    }
+    
+        function init() {
+             $('#busy').show();
+       	document.addEventListener("deviceready", onDeviceReady, true);
+        }    
+</script>  
+
+  </head>
+  <body onload="init();" id="stage" class="theme">
+  <div data-role="page" id="listPage"
+   style="background: transparent url('../images/bg.png') no-repeat center center;">
+
+	<div data-role="header" data-position="inline">
+    <h1>Places to Dine Nearby</h1>
+        <a href="../index.html" class="ui-btn-left"  data-ajax="false" data-icon="home" data-direction="reverse">
+            Home
+        </a>
+        <img id="fbpost" src='../images/facebook_btn34x34.png' alt='FaceBook Comment' class='ui-btn-right'><img/>
+	</div>
+
+  <div data-role="content">
+       <div id="busy"><img src="../images/loading_big.gif" alt="Loading Image" ></div>
+    <ul data-role="listview" id="search-list">
+    </ul>
+  </div>
+
+</div><!-- Page End -->
+
+ <div data-role="page" id="detailPage" data-add-back-btn="false">
+
+  <div data-role="header" data-position="inline">
+    <h1 id="NAME"></h1>
+      <a href="#"  class="ui-btn-left" id="showBack" data-ajax= "false" data-icon="arrow-l" data-direction="reverse">
+        Back
+      </a>
+      <img id="fbpostdetail" src='../images/facebook_btn34x34.png' alt='FaceBook Comment' class='ui-btn-right'><img/>
+   </div>
+	<div data-role="content" id="bizcontent">      							
+ </div>
+ </div><!-- Page2 End -->	
+  </body><!-- Body End -->
+</html>

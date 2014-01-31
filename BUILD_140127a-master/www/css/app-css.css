@@ -1,0 +1,77 @@
+
+#mainList {
+	
+    margin-top:-8px;
+
+}
+
+#yelp{
+	
+    margin-top:-3px;
+    
+}
+
+h2 {
+    word-wrap: break-word !important;
+    white-space: normal !important;
+}
+
+
+a {
+        word-wrap: break-word !important;
+        white-space: normal !important;
+}
+
+p {
+    word-wrap: break-word !important;
+    white-space: normal !important;
+}
+
+
+#stage.theme{
+    padding:3px;
+    /*width:10%;*/
+  }
+
+#stage.theme > h1{
+    color:#eee;
+    font-size:1.6em;
+    text-align:center;
+    margin-top:45%;
+    padding:0;
+  }
+#index{
+    background: url(../images/bg.png) 50% 50% repeat;
+	/*background-size: 22px 28px;*/
+
+}
+#aboutPage{
+   /* background: url(../images/about_us_back.jpg) 100% 100% repeat;
+	background-size: 100% 100%;*/
+    
+}
+  #busy {
+	display:none;
+	text-align: center;	
+	z-index:6;
+	background-width: 100%;
+	background-height:100%;
+	border-radius: 60px; 
+	-moz-border-radius: 60px;
+    -webkit-border-radius: 60px;
+    -khtml-border-radius: 60px;
+} 
+
+fb-btn-right{
+    position:relative;
+    border-left-width:0;
+    border-right-width:0;
+    zoom:1
+    position:absolute;
+    top:3px;
+    right:5px
+    margin-top:.25em;
+    margin-bottom:.25em
+    margin-right:5px;
+    margin-left:5px
+}

@@ -1,0 +1,182 @@
+<html>
+  <head>
+   <title>Explore Riverside</title>
+ 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../jquery/jquery.mobile-1.1.1.min.css" />
+  <link rel="stylesheet" href="../css/app-css.css" />
+      
+  
+  <script src="../js/cordova-2.0.0.js"></script>
+  <script type="text/javascript" src="../js/FacebookConnect.js"></script>
+<script src="../js/ChildBrowser.js"></script>
+  <script src="../jquery/jquery-1.7.2.min.js"></script>
+  <script src="../jquery/jquery.mobile-1.1.1.min.js"></script>
+  <script type="text/javascript" charset="utf-8">
+
+ 
+   var local_latitude;
+	var local_longitude;
+      var cb;
+      
+      function onCloseBrowser() {
+          console.log("onCloseBrowser!");
+      }
+      
+      function locChanged(loc) {
+          console.log("locChanged!");
+      }
+      
+      function onOpenExternal() {
+          alert("onOpenExternal!");
+      }
+
+	 function onError(error) {
+          navigator.notification.alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+   	}
+    
+
+      var onDeviceReady = function() {
+          
+          // Facebook Plugin Events and initialization 
+          var facebookConnect = window.plugins.facebookConnect;
+          
+          facebookConnect.initWithAppId("436990936339840",function(result){});
+          
+          $('#fbpost').click(function(){ 
+                             
+                             var dialogOptions = {
+                             link: 'http://www.facebook.com/CityofRiverside',
+                             picture: 'http://www.riversideca.gov/press/Brass-CA&I-bwn.jpg',
+                             name: 'Explore Riverside',
+                             caption: 'Riverside City, CA',
+                             message: 'Explore the opportunities in Riverside Community',
+                             description: '#1 Intelligent Community of the Year 2012'
+                             
+                             };
+                             facebookConnect.dialog('feed', dialogOptions, function(response) {
+                                                    console.log("FacebookConnect.dialog:" + JSON.stringify(response));
+                                                    });
+                             });
+          $('#fbpostdetail').click(function(){ 
+                                   
+                                   var dialogOptions = {
+                                   link: 'http://www.facebook.com/CityofRiverside',
+                                   picture: 'http://www.riversideca.gov/press/Brass-CA&I-bwn.jpg',
+                                   name: 'Explore Riverside',
+                                   caption: 'Riverside City, CA',
+                                   message: 'Explore the opportunities in Riverside Community',
+                                   description: '#1 Intelligent Community of the Year 2012'
+                                   
+                                   };
+                                   facebookConnect.dialog('feed', dialogOptions, function(response) {
+                                                          console.log("FacebookConnect.dialog:" + JSON.stringify(response));
+                                                          });
+                                   });          
+          
+          // Child Browser
+          cb = ChildBrowser.install();
+    		$('#mapit').live("click",function(){
+    		
+    		 navigator.geolocation.getCurrentPosition(function(position){
+    	
+              local_latitude = position.coords.latitude;
+              local_longitude = position.coords.longitude;
+                                                      var siteURL = "http://maps.google.com?saddr=" + local_latitude + "," + local_longitude + "&daddr=9330 Limonite Ave., Riverside, CA";
+                                                      
+                                                      cb = window.plugins.childBrowser;
+                                                      
+                                                      if(cb != null) {
+                                                      
+                                                      cb.onLocationChange = function(loc){ root.locChanged(loc); };
+                                                      cb.onClose = function(){root.onCloseBrowser(); };
+                                                      cb.onOpenExternal = function(){root.onOpenExternal(); };
+                                                      cb.showWebPage(siteURL.replace(/ /g,"+"));
+                                                      
+                                                      
+                                                      }
+        	}    	
+        	, onError);
+       
+    			   
+			});
+			
+			$('#website').live("click",function(){
+                               var siteURL = "http://www.americangolf.com";
+                               
+                               cb = window.plugins.childBrowser;
+                               
+                               if(cb != null) {
+                               
+                               cb.onLocationChange = function(loc){ root.locChanged(loc); };
+                               cb.onClose = function(){root.onCloseBrowser(); };
+                               cb.onOpenExternal = function(){root.onOpenExternal(); };
+                               cb.showWebPage(siteURL.replace(/ /g,"+"));
+                               
+                               
+                               }
+			});
+			
+    
+       };
+       
+        function init() {
+       	document.addEventListener("deviceready", onDeviceReady, true);
+        }    
+</script>  
+
+  </head>
+  <body onload="init();" id="stage" class="theme"> 
+     
+<div data-role="page" data-add-back-btn="false">
+
+<div data-role="header" data-position="inline">
+<h1>Paradise Knolls Golf Course</h1>
+<a href="playList.html" class="ui-btn-left" data-icon="arrow-l" data-direction="reverse" data-ajax="false">
+Back
+</a>
+          <img id="fbpostdetail" src='../images/facebook_btn34x34.png' alt='FaceBook Comment' class='ui-btn-right'><img/>
+</div>
+
+<div data-role="content">      
+<table width="100%">
+<tr>
+<td width="1%" style="vertical-align: top; padding: 6px">
+<img src="../images/play/paradise_knolls_golf_course.jpg">
+</td>
+<td style="vertical-align: top">
+<h2 style="margin-top: 0px">Paradise Knolls Golf Course</h2>
+<p><strong>Entertainment/ Recreation/ Relaxation</strong></p>
+</td>				
+</tr>		      
+</table>
+		
+
+<div data-role="collapsible" data-theme="a" data-content-theme="a" data-collapsed="false">
+<h3>Address</h3>
+<p>
+<a href="#" id="mapit">
+9330 Limonite Ave.
+</a>
+</div>
+
+<div data-role="collapsible" data-theme="a" data-content-theme="a" data-collapsed="false">
+<h3>Phone</h3>
+<p>
+<a href="tel:951-685-7034">951-685-7034</a>
+</div>
+
+<div data-role="collapsible" data-theme="a" data-content-theme="a" data-collapsed="false">
+<h3>Website</h3>
+<p>
+<a href="#" id="website">www.americangolf.com</a>
+
+</div>
+
+								
+</div>	
+
+</div><!-- Page End -->
+  </body><!-- Body End -->
+</html>
