@@ -42,4 +42,7 @@
     <feature name="FacebookConnect">
         <param name="ios-package" value="FacebookConnect" />
     </feature>
+    <feature name="org.apache.cordova.facebook.Connect">
+        <param name="ios-package" value="FacebookConnectPlugin" />
+    </feature>
 </widget>
