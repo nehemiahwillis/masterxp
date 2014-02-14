@@ -33,8 +33,8 @@
 		61ADA856189C848000DA90EE /* icon-76x76.png in Resources */ = {isa = PBXBuildFile; fileRef = 61ADA853189C848000DA90EE /* icon-76x76.png */; };
 		61ADA857189C848000DA90EE /* icon-120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 61ADA854189C848000DA90EE /* icon-120x120.png */; };
 		61ADA858189C848000DA90EE /* icon-152x152.png in Resources */ = {isa = PBXBuildFile; fileRef = 61ADA855189C848000DA90EE /* icon-152x152.png */; };
-		61ADA85C189C863100DA90EE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61ADA85B189C863100DA90EE /* FacebookSDK.framework */; };
 		61ADA85F189C88F100DA90EE /* FacebookConnectPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 61ADA85E189C88F100DA90EE /* FacebookConnectPlugin.m */; };
+		61ADA99918AEC87A00DA90EE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61ADA99818AEC87A00DA90EE /* FacebookSDK.framework */; };
 		63904A57BA1245FC8E024740 /* CDVInAppBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7BEDF09E3A4DFCA97ECCD5 /* CDVInAppBrowser.m */; };
 		B6C8CB7FD28F43AE8AB8FCB2 /* CDVLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = DF83EF534C004F48BAE6E3DC /* CDVLocation.m */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
@@ -90,9 +90,9 @@
 		61ADA853189C848000DA90EE /* icon-76x76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-76x76.png"; sourceTree = "<group>"; };
 		61ADA854189C848000DA90EE /* icon-120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-120x120.png"; sourceTree = "<group>"; };
 		61ADA855189C848000DA90EE /* icon-152x152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-152x152.png"; sourceTree = "<group>"; };
-		61ADA85B189C863100DA90EE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		61ADA85D189C88F100DA90EE /* FacebookConnectPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookConnectPlugin.h; sourceTree = "<group>"; };
 		61ADA85E189C88F100DA90EE /* FacebookConnectPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookConnectPlugin.m; sourceTree = "<group>"; };
+		61ADA99818AEC87A00DA90EE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		6A00EF2C35594F01AE6AEE7F /* CDVInAppBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVInAppBrowser.h; path = org.apache.cordova.inappbrowser/CDVInAppBrowser.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Explore Riverside-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Explore Riverside-Info.plist"; path = "../Explore Riverside-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9AFD65CED4884733929C6D60 /* CDVLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVLocation.h; path = org.apache.cordova.geolocation/CDVLocation.h; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61ADA85C189C863100DA90EE /* FacebookSDK.framework in Frameworks */,
+				61ADA99918AEC87A00DA90EE /* FacebookSDK.framework in Frameworks */,
 				5B1594DD16A7569C00FEF299 /* AssetsLibrary.framework in Frameworks */,
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -200,7 +200,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				61ADA85B189C863100DA90EE /* FacebookSDK.framework */,
+				61ADA99818AEC87A00DA90EE /* FacebookSDK.framework */,
 				5AEE5B34173C68D80009041E /* CoreLocation.framework */,
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -304,11 +304,6 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 500;
-				TargetAttributes = {
-					1D6058900D05DD3D006BFB54 = {
-						DevelopmentTeam = S7NWEW7YL7;
-					};
-				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Explore Riverside" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -323,6 +318,7 @@
 				es,
 				de,
 				se,
+				he,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -461,12 +457,12 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution:  City of Riverside  (S7NWEW7YL7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: nehemiah willis (W934GPT62Q)";
 				COPY_PHASE_STRIP = NO;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch *.xcode* (*) .DS_Store CVS .svn .git .hg";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/nehemiahwillis/Documents/FacebookSDK,
+					"${SRCROOT}",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -497,9 +493,9 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Explore Riverside";
-				PROVISIONING_PROFILE = "26141D17-B8F9-4185-B7C9-EA64717C0B00";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "/Users/nehemiahwillis/Documents/FacebookSDK/**";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -508,12 +504,13 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution:  City of Riverside  (S7NWEW7YL7)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: nehemiah willis (W934GPT62Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: nehemiah willis (W934GPT62Q)";
 				COPY_PHASE_STRIP = YES;
 				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch *.xcode* (*) .DS_Store CVS .svn .git .hg";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/nehemiahwillis/Documents/FacebookSDK,
+					"${SRCROOT}",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Explore Riverside/Explore Riverside-Prefix.pch";
@@ -542,9 +539,9 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "Explore Riverside";
-				PROVISIONING_PROFILE = "26141D17-B8F9-4185-B7C9-EA64717C0B00";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				USER_HEADER_SEARCH_PATHS = "/Users/nehemiahwillis/Documents/FacebookSDK/**";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
