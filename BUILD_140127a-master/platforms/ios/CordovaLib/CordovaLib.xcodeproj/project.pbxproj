@@ -30,7 +30,7 @@
 		30F3930B169F839700B22307 /* CDVJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F39309169F839700B22307 /* CDVJSON.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		30F3930C169F839700B22307 /* CDVJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 30F3930A169F839700B22307 /* CDVJSON.m */; };
 		30F5EBAB14CA26E700987760 /* CDVCommandDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 30F5EBA914CA26E700987760 /* CDVCommandDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		61ADA85A189C85E600DA90EE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61ADA859189C85E600DA90EE /* FacebookSDK.framework */; };
+		3405882518AEE64E00773777 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3405882418AEE64E00773777 /* FacebookSDK.framework */; };
 		7E14B5A81705050A0032169E /* CDVTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E14B5A61705050A0032169E /* CDVTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E14B5A91705050A0032169E /* CDVTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E14B5A71705050A0032169E /* CDVTimer.m */; };
 		8852C43A14B65FD800F0E735 /* CDVViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 8852C43614B65FD800F0E735 /* CDVViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -80,6 +80,7 @@
 		30F39309169F839700B22307 /* CDVJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVJSON.h; path = Classes/CDVJSON.h; sourceTree = "<group>"; };
 		30F3930A169F839700B22307 /* CDVJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDVJSON.m; path = Classes/CDVJSON.m; sourceTree = "<group>"; };
 		30F5EBA914CA26E700987760 /* CDVCommandDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDVCommandDelegate.h; path = Classes/CDVCommandDelegate.h; sourceTree = "<group>"; };
+		3405882418AEE64E00773777 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../FacebookSDK.framework; sourceTree = "<group>"; };
 		61ADA859189C85E600DA90EE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		686357AA141002F100DF4CF2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		686357AC141002F100DF4CF2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -124,7 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61ADA85A189C85E600DA90EE /* FacebookSDK.framework in Frameworks */,
+				3405882518AEE64E00773777 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +155,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3405882418AEE64E00773777 /* FacebookSDK.framework */,
 				61ADA859189C85E600DA90EE /* FacebookSDK.framework */,
 				68A32D7414103017006B237C /* AddressBook.framework */,
 				8220B5C316D5427E00EC3921 /* AssetsLibrary.framework */,
@@ -391,6 +393,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/nehemiahwillis/Documents/FacebookSDK/**",
+					"/Users/ariantay/Desktop/masterxp/BUILD_140127a-master/platforms/ios/**",
+					"$(SRCROOT)",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
@@ -404,13 +408,15 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"/Users/nehemiahwillis/Documents/FacebookSDK/**",
+					"$(SRCROOT)/**",
+					"/Users/ariantay/Desktop/masterxp/BUILD_140127a-master/platforms/ios/**",
 				);
 				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = Cordova;
 				PUBLIC_HEADERS_FOLDER_PATH = include/Cordova;
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "/Users/nehemiahwillis/Documents/FacebookSDK/**";
+				USER_HEADER_SEARCH_PATHS = "/Users/nehemiahwillis/Documents/FacebookSDK/** $(SRCROOT)/** /Users/ariantay/Desktop/masterxp/BUILD_140127a-master/platforms/ios/**";
 			};
 			name = Debug;
 		};
@@ -434,6 +440,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/nehemiahwillis/Documents/FacebookSDK/**",
+					"/Users/ariantay/Desktop/masterxp/BUILD_140127a-master/platforms/ios/**",
+					"$(SRCROOT)",
 				);
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -445,13 +453,15 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"/Users/nehemiahwillis/Documents/FacebookSDK/**",
+					"$(SRCROOT)/**",
+					"/Users/ariantay/Desktop/masterxp/BUILD_140127a-master/platforms/ios/**",
 				);
 				INSTALL_PATH = /usr/local/lib;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = Cordova;
 				PUBLIC_HEADERS_FOLDER_PATH = include/Cordova;
 				SKIP_INSTALL = YES;
-				USER_HEADER_SEARCH_PATHS = "/Users/nehemiahwillis/Documents/FacebookSDK/**";
+				USER_HEADER_SEARCH_PATHS = "/Users/nehemiahwillis/Documents/FacebookSDK/** $(SRCROOT)/** /Users/ariantay/Desktop/masterxp/BUILD_140127a-master/platforms/ios/**";
 			};
 			name = Release;
 		};
